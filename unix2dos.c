@@ -34,6 +34,11 @@ int main(int argc, char *argv[]) {
         salida = stdout;
     }
 
+    if (entrada == NULL){
+        fprintf(stderr,"Error al cargar el archivo");
+        return 0;
+    }
+
     while((caracter = fgetc(entrada)) != EOF)
         {
             if(caracter == '\n'){
