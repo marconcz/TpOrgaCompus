@@ -14,20 +14,15 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < argc; i++){
     	if ((strcmp(argv[i], "-i") == 0)){
     		if (argc > i+1){
-                if (strcmp(argv[i], "-") != 0){
-                    entrada = fopen(argv[i+1], "r");
-                    entradaEstandar = false;
-                }
-
+    			entrada = fopen(argv[i+1], "r");
+                entradaEstandar = false;
     		}
     	}
 
     	if ((strcmp(argv[i], "-o") == 0)){
     		if (argc > i+1){
-    			if (strcmp(argv[i], "-") != 0){
-                    entrada = fopen(argv[i+1], "r");
-                    entradaEstandar = false;
-                }
+    			salida = fopen(argv[i+1], "w");
+                salidaEstandar = false;
     		}
     	}
     }
@@ -41,7 +36,10 @@ int main(int argc, char *argv[]) {
 
     while((caracter = fgetc(entrada)) != EOF)
         {
-            if(caracter != '\r'){
+            if(caracter == '\n'){
+                fputc('\r',salida);
+                fputc('\n',salida);
+            }else{
                 fputc(caracter,salida);
             }
         }
