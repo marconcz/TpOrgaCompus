@@ -11,10 +11,11 @@ int main(int argc, char *argv[]) {
 	bool entradaEstandar = true;
     bool salidaEstandar = true;
 
-    for (int i = 0; i < argc; i++){
+    int i;
+    for (i = 0; i < argc; i++){
     	if ((strcmp(argv[i], "-i") == 0)){
     		if (argc > i+1){
-                if (strcmp(argv[i], "-") != 0){
+                if (strcmp(argv[i+1], "-") != 0){
                     entrada = fopen(argv[i+1], "r");
                     entradaEstandar = false;
                 }
@@ -24,8 +25,8 @@ int main(int argc, char *argv[]) {
 
     	if ((strcmp(argv[i], "-o") == 0)){
     		if (argc > i+1){
-    			if (strcmp(argv[i], "-") != 0){
-                    entrada = fopen(argv[i+1], "r");
+    			if (strcmp(argv[i+1], "-") != 0){
+                    salida = fopen(argv[i+1], "r");
                     entradaEstandar = false;
                 }
     		}
