@@ -26,8 +26,8 @@ int main(int argc, char *argv[]) {
     	if ((strcmp(argv[i], "-o") == 0)){
     		if (argc > i+1){
     			if (strcmp(argv[i+1], "-") != 0){
-                    salida = fopen(argv[i+1], "r");
-                    entradaEstandar = false;
+                    salida = fopen(argv[i+1], "w");
+                    salidaEstandar = false;
                 }
     		}
     	}
